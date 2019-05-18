@@ -38,7 +38,7 @@ function recv() uart.setup(0,9600,8,0,1,0) uart.on('data', '\000', recv_name, 0)
 CHUNK_END = '\v'
 CHUNK_REPLY = '\v'
 
-from serial.tools.miniterm import Miniterm, console, NEWLINE_CONVERISON_MAP
+from serial.tools.miniterm import Miniterm
 
 class MyMiniterm(Miniterm):
     def __init__(self, serial):
@@ -46,7 +46,7 @@ class MyMiniterm(Miniterm):
         self.echo = False
         self.convert_outgoing = 2
         self.repr_mode = 1
-        self.newline = NEWLINE_CONVERISON_MAP[self.convert_outgoing]
+        self.newline = "\r\n"
         self.dtr_state = True
         self.rts_state = True
         self.break_state = False
